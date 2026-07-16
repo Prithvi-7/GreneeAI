@@ -6,12 +6,16 @@ from app.models.subsidy import Subsidy
 from app.models.application import Application
 from app.models.dashboard import Dashboard
 from app.models.benchmark import Benchmark
+from app.models.auditor import Auditor
+from app.models.marketplace import Marketplace
 
 # Import Routers
 from app.routes.subsidy import router as subsidy_router
 from app.routes.application import router as application_router
 from app.routes.dashboard import router as dashboard_router
 from app.routes.benchmark import router as benchmark_router
+from app.routes.auditor import router as auditor_router
+from app.routes.marketplace import router as marketplace_router
 
 # Create Database Tables
 Base.metadata.create_all(bind=engine)
@@ -27,6 +31,8 @@ app.include_router(subsidy_router)
 app.include_router(application_router)
 app.include_router(dashboard_router)
 app.include_router(benchmark_router)
+app.include_router(auditor_router)
+app.include_router(marketplace_router)
 
 
 @app.get("/")
@@ -38,7 +44,9 @@ def home():
         "modules": [
             "Government Subsidy Discovery",
             "Dashboard & Analytics",
-            "Benchmarking Engine"
+            "Benchmarking Engine",
+            "Auditor Portal",
+            "Marketplace"
         ],
         "status": "Running Successfully"
     }
