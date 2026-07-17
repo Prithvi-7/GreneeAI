@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'docker build -t project-app .'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                docker stop project-app || true
+                docker rm project-app || true
+
+                docker run -d \
+                --name project-app \
+                -p 80:80 \
+                project-app
+                '''
+            }
+        }
+    }
+}
