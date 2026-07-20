@@ -16,6 +16,7 @@ from app.routes.dashboard import router as dashboard_router
 from app.routes.benchmark import router as benchmark_router
 from app.routes.auditor import router as auditor_router
 from app.routes.marketplace import router as marketplace_router
+from app.routes.ai_chatbot import router as ai_chatbot_router
 
 # Create Database Tables
 Base.metadata.create_all(bind=engine)
@@ -33,6 +34,7 @@ app.include_router(dashboard_router)
 app.include_router(benchmark_router)
 app.include_router(auditor_router)
 app.include_router(marketplace_router)
+app.include_router(ai_chatbot_router)
 
 
 @app.get("/")
@@ -46,7 +48,8 @@ def home():
             "Dashboard & Analytics",
             "Benchmarking Engine",
             "Auditor Portal",
-            "Marketplace"
+            "Marketplace",
+            "AI Chatbot"
         ],
         "status": "Running Successfully"
     }
