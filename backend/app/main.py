@@ -26,6 +26,9 @@ from app.routes.ai_energy_optimization import (
 from app.routes.ai_forecasting import (
     router as ai_forecasting_router
 )
+from app.routes.ai_benchmarking import (
+    router as ai_benchmarking_router
+)
 
 # Create Database Tables
 Base.metadata.create_all(bind=engine)
@@ -49,6 +52,7 @@ app.include_router(carbon_calculator_router)
 app.include_router(report_generator_router)
 app.include_router(ai_energy_optimization_router)
 app.include_router(ai_forecasting_router)
+app.include_router(ai_benchmarking_router)
 
 
 @app.get("/")
@@ -68,7 +72,8 @@ def home():
             "Carbon Calculator",
             "Report Generator",
             "AI Energy Optimization",
-            "AI Forecasting"
+            "AI Forecasting",
+            "AI Benchmarking"
         ],
         "status": "Running Successfully"
     }
