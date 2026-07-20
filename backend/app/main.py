@@ -16,9 +16,13 @@ from app.routes.dashboard import router as dashboard_router
 from app.routes.benchmark import router as benchmark_router
 from app.routes.auditor import router as auditor_router
 from app.routes.marketplace import router as marketplace_router
+
 from app.routes.ai_chatbot import router as ai_chatbot_router
 from app.routes.carbon_calculator import router as carbon_calculator_router
 from app.routes.report_generator import router as report_generator_router
+from app.routes.ai_energy_optimization import (
+    router as ai_energy_optimization_router
+)
 
 # Create Database Tables
 Base.metadata.create_all(bind=engine)
@@ -36,9 +40,11 @@ app.include_router(dashboard_router)
 app.include_router(benchmark_router)
 app.include_router(auditor_router)
 app.include_router(marketplace_router)
+
 app.include_router(ai_chatbot_router)
 app.include_router(carbon_calculator_router)
 app.include_router(report_generator_router)
+app.include_router(ai_energy_optimization_router)
 
 
 @app.get("/")
@@ -56,7 +62,8 @@ def home():
             "Marketplace",
             "AI Chatbot",
             "Carbon Calculator",
-            "Report Generator"
+            "Report Generator",
+            "AI Energy Optimization"
         ],
         "status": "Running Successfully"
     }
