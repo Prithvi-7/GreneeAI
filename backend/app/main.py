@@ -17,6 +17,8 @@ from app.routes.benchmark import router as benchmark_router
 from app.routes.auditor import router as auditor_router
 from app.routes.marketplace import router as marketplace_router
 from app.routes.ai_chatbot import router as ai_chatbot_router
+from app.routes.carbon_calculator import router as carbon_calculator_router
+from app.routes.report_generator import router as report_generator_router
 
 # Create Database Tables
 Base.metadata.create_all(bind=engine)
@@ -35,6 +37,8 @@ app.include_router(benchmark_router)
 app.include_router(auditor_router)
 app.include_router(marketplace_router)
 app.include_router(ai_chatbot_router)
+app.include_router(carbon_calculator_router)
+app.include_router(report_generator_router)
 
 
 @app.get("/")
@@ -45,11 +49,14 @@ def home():
         "version": "1.0.0",
         "modules": [
             "Government Subsidy Discovery",
+            "Application Management",
             "Dashboard & Analytics",
             "Benchmarking Engine",
             "Auditor Portal",
             "Marketplace",
-            "AI Chatbot"
+            "AI Chatbot",
+            "Carbon Calculator",
+            "Report Generator"
         ],
         "status": "Running Successfully"
     }
